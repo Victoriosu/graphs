@@ -1,5 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Graph, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'When creating' do
+    it 'Should have a name' do
+      expect { Graph.create! }.to raise_error(ActiveRecord::RecordInvalid)
+    end
+  end
 end

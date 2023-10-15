@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_05_182706) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_07_033828) do
+  create_table "goal_profits", force: :cascade do |t|
+    t.date "registered_date"
+    t.integer "goal_id", null: false
+    t.integer "profit"
+    t.float "variation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["goal_id"], name: "index_goal_profits_on_goal_id"
+  end
+
+  create_table "goals", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "graphs", force: :cascade do |t|
     t.string "name"
     t.integer "list_order"
@@ -18,4 +34,5 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_05_182706) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "goal_profits", "goals"
 end

@@ -1,8 +1,18 @@
 class GraphsController < ApplicationController
   before_action :set_graph, only: %i[ show edit update destroy ]
 
+  def refresh_goals_info
+    redirect_to root_path
+  end
+
   # GET /graphs or /graphs.json
   def index
+    total_sum = 0
+    @gpa = GoalProfit.where('goal_id = 6 AND variation != 0' ).pluck(:registered_date, :variation)
+    @gpa.each do |as|
+      total_sum += as[1]
+      as[1] = total_sum
+    end 
     @graphs = Graph.all
   end
 
