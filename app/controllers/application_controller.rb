@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
 
 
     def retrieve_access_token
-        session[:fintual_token] = ApiModule.retrieve_user_token["data"]["attributes"]["token"] unless session[:fintual_token] 
+        if !session[:fintual_token] 
+            session[:fintual_token] = ApiModule.retrieve_user_token["data"]["attributes"]["token"] 
+        end
     end
 end
