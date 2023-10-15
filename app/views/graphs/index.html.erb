@@ -22,6 +22,8 @@
 <%= line_chart @gpa, width: "40%", height: "500px", min: 0 %>
 
 <%= column_chart @gpa, width: "40%", height: "500px", min: 0, discrete: true %>
+
+<%= line_chart GoalProfit.where(goal_id: Goal.find_by(name: "Savings").id).pluck(:id, :profit), width: "40%", height: "500px", min: 0 %>
 </div>
 </div>
 

@@ -8,7 +8,7 @@ class GraphsController < ApplicationController
   # GET /graphs or /graphs.json
   def index
     total_sum = 0
-    @gpa = GoalProfit.where('goal_id = 6 AND variation != 0' ).pluck(:registered_date, :variation)
+    @gpa = GoalProfit.where('goal_id = ? AND variation != 0', Goal.find_by(name: "Savings").id).pluck(:registered_date, :variation)
     @gpa.each do |as|
       total_sum += as[1]
       as[1] = total_sum
