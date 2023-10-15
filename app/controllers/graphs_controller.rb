@@ -2,6 +2,7 @@ class GraphsController < ApplicationController
   before_action :set_graph, only: %i[ show edit update destroy ]
 
   def refresh_goals_info
+    Goal.get_goals_profits_from_api(session[:fintual_token]) 
     redirect_to root_path
   end
 
