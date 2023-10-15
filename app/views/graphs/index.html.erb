@@ -2,6 +2,9 @@
 
 <div style="display: grid;justify-content: center;">
 <h1>Graphs</h1>
+
+<h3> Goals in db: <%= Goal.count %> </h3>
+<h3> Profits in db: <%= GoalProfit.count %> </h3>
 <span style="padding-left: 11%;">
 <%= button_to "Refresh Info", {:controller => "graphs", :action => "refresh_goals_info"} ,remote: :true %> 
 </span>
